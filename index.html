@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Lcs by ameli</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Lcs</h1>
+        <p class="header">Extracts Lagrangian Coherent Structures form flow.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/ameli/lcs/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/ameli/lcs/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/ameli/lcs">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/ameli">ameli</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="lcs-plugin-for-paraview" class="anchor" href="#lcs-plugin-for-paraview"><span class="octicon octicon-link"></span></a>LCS Plugin for ParaView</h1>
+
+<p>This package has been created to extract coherent structures of the flow. The resulting output is a manifold with consistent triangulation orientation.</p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/1.png" alt="Max Strain LCS of ABC flow" title="Max Strain LCS of ABC flow"><a name="figAAAexample"></a></p>
+
+<h1>
+<a name="build-source" class="anchor" href="#build-source"><span class="octicon octicon-link"></span></a>Build Source</h1>
+
+<p>Source code can be obtained from <a href="https://github.com/ameli/lcs">github repository</a>. Create a build directory and download the source code inside the build directory:</p>
+
+<pre><code>$ git clone git://github.com/ameli/lcs
+$ cd lcs
+$ mkdir build
+</code></pre>
+
+<p>Now, build the code:</p>
+
+<pre><code>$ cd build
+$ cmake ..
+$ make
+$ make install
+</code></pre>
+
+<p>Installation directory is in <em>install</em> directory. For system wide installation, users may change <em>PROJECT_INSTALL_PATH</em> in cmake. For UNIX systems a preferred system wide path is <code>/usr/local/bin</code>.</p>
+
+<h1>
+<a name="program-usage" class="anchor" href="#program-usage"><span class="octicon octicon-link"></span></a>Program Usage</h1>
+
+<p>The programcan be used either in terminal or as a ParaView plugin. Here are examples to use it in terminal:</p>
+
+<pre><code>$ lcs /input-path/inputfile.vtk outputfile.vtk
+</code></pre>
+
+<p>For help, use <code>-h</code>, for get program information use <code>-i</code> and for see the license, use <code>-l</code> options.</p>
+
+<pre><code>$ lcs -h
+$ lcs -i
+$ lcs -l
+</code></pre>
+
+<p>The input file should be a <code>structured point</code> data. Also Cauchy-Green tensors should be included in <code>PointData</code> of the file as a tensor field. A sample of input data with few number line are as following:</p>
+
+<pre><code># vtk DataFile Version 3.0
+t = 0.000000000
+ASCII
+
+DATASET STRUCTURED_POINTS
+DIMENSIONS 101 101 101
+ORIGIN -3.141593 -3.141593 -3.141593
+SPACING 0.062831853 0.062831853 0.062831853
+
+POINT_DATA 1030301
+TENSORS CG double
+1841.529748 -571.912532 -688.962477
+-571.912532 178.498989 212.501996
+-688.962477 212.501996 260.187902
+...
+</code></pre>
+
+<h1>
+<a name="paraview-plugin-usage" class="anchor" href="#paraview-plugin-usage"><span class="octicon octicon-link"></span></a>ParaView Plugin Usage</h1>
+
+<p>For using the program as a plugin, should select the <code>BUILD_PARAVIEW_PLUGIN</code> while configuring in <code>ccmake</code>. After compiling the code, the two shared libraries <code>libDeformationPlugin.so</code> and <code>linIdentifyStructuresPlugin.so</code> will be created in the <code>bin</code> folder. Depending on the operating system, the extension of shared libraries are different. In Linux, the expedition is <code>.so</code>, while in Mac and Windows are <code>.dll</code> and <code>.dylib</code> respectively.</p>
+
+<p>Figures <a href="#PV1">2</a>,<a href="#PV2">3</a> and <a href="#PV3">4</a> illustrates how to load the plugin and apply it to make a pipeline in ParaView. loading the plugin in ParaView. Users may find the filter in <strong>Filter</strong> menu under <strong>Extensions</strong>.</p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/PV-1.png" alt="Manage Plugins" title="Manage Plugins"><a name="PV1"></a></p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/PV-2.png" alt="Load Plugins" title="Load Plugins"><a name="PV2"></a></p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/PV-3.png" alt="Apply Plugins" title="Apply Plugins"><a name="PV3"></a></p>
+
+<h1>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h1>
+
+<p>Users can choose which type of deformation be used for extracting LCS. The options are</p>
+
+<ul>
+<li>Max Strain LCS</li>
+<li>Min Strain LCS</li>
+<li>Shear LCS (TODO)</li>
+</ul><p>Options of plugins as shown in figure <a href="#PV4">5</a>.</p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/PV-4.png" alt="Setting of the Plugins" title="Setting of the Plugins"><a name="PV4"></a></p>
+
+<h1>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h1>
+
+<p>Figure <a href="#2">6</a> shows max strain LCS for ABC flow. The resolution of initial flowmap grid is 101x101x101.</p>
+
+<p><img src="https://raw.github.com/ameli/lcs/master/doc/figures/2.png" alt="Max Strain LCS for ABC flow" title="Max Strain LCS for ABC flow"><a name="2"></a></p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This source code is provided <em>as-is</em>, without any express or implied warranty. In no event will the author be held liable for any damages arising from the use of this software.</p>
+
+<p>Permission is granted to anyone to use this software for non commercial purpose, to alter it and redistribute it freely, subject to the following restrictions:</p>
+
+<ul>
+<li><p>The origin of this source code must not be misrepresented; you must not claim that you wrote the original source code. </p></li>
+<li><p>You may modify or alter the source code at your own risk, provided that such modifications are extensively commented. Altered source versions must not be misrepresented as being the original source code.</p></li>
+<li><p>Source code may not be redistributed in any way. You may distribute the target binary for non-commercial purposes.</p></li>
+<li><p>If you use this source code in a non-commercial product, an acknowledgment in the product documentation would be appreciated.</p></li>
+<li><p>This notice may not be removed or altered from any source distribution.</p></li>
+</ul><h1>
+<a name="bug-report" class="anchor" href="#bug-report"><span class="octicon octicon-link"></span></a>Bug Report</h1>
+
+<p>Any bug reports and comments are appreciated. You may report bugs at <a href="https://github.com/ameli/lcs">github</a>, or send email.</p>
+
+<h1>
+<a name="acknowledgement" class="anchor" href="#acknowledgement"><span class="octicon octicon-link"></span></a>Acknowledgement</h1>
+
+<p>This work was supported by the National Science Foundation, award number 1047963.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
