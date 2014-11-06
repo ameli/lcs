@@ -1,0 +1,23 @@
+<!--
+ * =====================================================================================
+ *
+ *       Filename:  DeformationICN.qrc
+ *
+ *    Description:  Deformation Plugin for ParaView - Qt Resource File
+ *
+ *        Version:  1.0
+ *        Created:  04/21/2014 12:13:23 PM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Siavash Ameli
+ *   Organization:  University of California, Berkeley
+ *
+ * =====================================================================================
+ -->
+
+<RCC>
+    <qresource prefix="/icons">
+        <file>DeformationIcon.png</file>
+    </qresource>
+</RCC>

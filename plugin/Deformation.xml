@@ -1,0 +1,64 @@
+<!--
+ * =====================================================================================
+ *
+ *       Filename:  Deformation.xml
+ *
+ *    Description:  Computes Deformation for flowmap
+ *
+ *        Version:  1.0
+ *        Created:  02/13/2014 05:49:44 PM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Siavash Ameli
+ *   Organization:  University of California, Berkeley
+ *
+ * =====================================================================================
+ -->
+
+<ServerManagerConfiguration>
+    <ProxyGroup name="filters">
+        <SourceProxy name="Deformation" class="Deformation" label="Deformation">
+
+            <Documentation
+                long_help="Computes strain and shear deformations from the flowmap"
+                short_help="Computes Deformation of the flowmap">
+            </Documentation>
+            
+            <!-- Input Connection -->
+            <InputProperty
+                name="Input"
+                command="SetInputConnection">
+                <ProxyGroupDomain name="groups">
+                    <Group name="sources"/>
+                    <Group name="filters"/>
+                </ProxyGroupDomain>
+                <DataTypeDomain name="input_type">
+                    <DataType value="vtkDataSet"/>
+                </DataTypeDomain>
+            </InputProperty>
+
+            <!-- Smoothing Status -->
+            <IntVectorProperty name="Smooth Data"
+                comman="SetSmoothingStatus"
+                number_of_elements="1"
+                default_values="1">
+                <BooleanDomain name="bool"/>
+                <Documentation>
+                    Toggle smootning CG Tensor field.
+                </Documentation>
+            </IntVectorProperty>
+
+            <!-- Smoothing Kernel Size -->
+            <IntVectorProperty name="Smoothing Kernel Size"
+                command="SetSmoothingKernelSize"
+                number_of_elements="1"
+                default_values="7">
+                <Documentation>
+                    Scope of Gaussian kernel. This should be an ODD number.
+                </Documentation>
+            </IntVectorProperty>
+            
+        </SourceProxy>
+    </ProxyGroup>
+</ServerManagerConfiguration>

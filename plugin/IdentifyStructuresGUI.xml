@@ -1,0 +1,23 @@
+<!--
+ * =====================================================================================
+ *
+ *       Filename:  IdentifyStructuresGUI.xml
+ *
+ *    Description:  Finds Coherent Structures
+ *
+ *        Version:  1.0
+ *        Created:  02/14/2014 12:24:36 AM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Siavash Ameli
+ *   Organization:  University of California, Berkeley
+ *
+ * =====================================================================================
+ -->
+
+<ParaViewFilters>
+    <Category name="Extensions" menu_label="&amp;Extensions">
+        <Filter name="IdentifyStructures" icon=":/IdentifyStructuresIcon.png"/>
+    </Category>
+</ParaViewFilters>

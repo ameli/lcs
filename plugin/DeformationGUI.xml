@@ -1,0 +1,23 @@
+<!--
+ * =====================================================================================
+ *
+ *       Filename:  DeformationGUI.xml
+ *
+ *    Description:  Computes Deformation for flowmap
+ *
+ *        Version:  1.0
+ *        Created:  02/13/2014 05:48:05 PM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Siavash Ameli
+ *   Organization:  University of California, Berkeley
+ *
+ * =====================================================================================
+ -->
+
+<ParaViewFilters>
+    <Category name="Extensions" menu_label="&amp;Extensions">
+        <Filter name="Deformation" icon=":/DeformationIcon.png"/>
+    </Category>
+</ParaViewFilters>

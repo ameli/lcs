@@ -1,0 +1,23 @@
+<!--
+ * =====================================================================================
+ *
+ *       Filename:  IdentifyStructuresICN.qrc
+ *
+ *    Description:  Identify Structures Plugin for ParaView - Qt Resource File
+ *
+ *        Version:  1.0
+ *        Created:  04/21/2014 12:15:56 PM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Siavash Ameli
+ *   Organization:  University of California, Berkeley
+ *
+ * =====================================================================================
+ -->
+
+<RCC>
+    <qresource prefix="/icons">
+        <file>IdentifyStructuresIcon.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,67 @@
+# =====
+# Build
+# =====
+
+build/*
+*.obj
+*.o
+*.out
+
+# ===
+# Log
+# ===
+
+log/*
+*.log
+
+# ======
+# Debian
+# ======
+
+debian/*
+
+# ====
+# Data
+# ====
+
+*.vtu
+*.vtk
+
+# ===
+# Doc
+# ===
+
+doc/*.txt
+doc/*.aux
+doc/*.log
+doc/*.out
+doc/*.tex
+doc/*.toc
+doc/*.bib
+doc/*.cls
+doc/*.nav
+doc/*.snm
+doc/*.vrb
+doc/*.lof
+doc/*.lot
+doc/*.dvi
+doc/*.bbl
+doc/*.bst
+doc/*.synctec.gz
+
+# ===
+# Vim
+# ===
+
+*.vim
+*.swp
+*.swo
+
+# =======
+# General
+# =======
+
+*~
+*.log
+TODO
+Notes
